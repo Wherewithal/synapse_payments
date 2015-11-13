@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.1.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Nov 2015 19:00:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: UTF-8
+      string: '{"error_code": "0", "http_code": "200", "node_count": 3, "nodes": [{"_id":
+        "5644fcde86c2731af0885e01", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/5644fcde86c2731af0885e01"}},
+        "allowed": "CREDIT-AND-DEBIT", "extra": {"supp_id": "123456"}, "info": {"balance":
+        {"amount": 10000.0, "currency": "USD"}, "name_on_account": "Javier Julio",
+        "nickname": "My Synapse Wallet"}, "is_active": true, "type": "SYNAPSE-US"},
+        {"_id": "5644fe2a86c2731af0885e02", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/5644fe2a86c2731af0885e02"}},
+        "allowed": "CREDIT-AND-DEBIT", "extra": {"supp_id": "123456"}, "info": {"balance":
+        {"amount": 10000.0, "currency": "USD"}, "name_on_account": "Javier Julio",
+        "nickname": "My Integration Test Synapse Wallet"}, "is_active": true, "type":
+        "SYNAPSE-US"}, {"_id": "564577f886c27328ade7faf0", "_links": {"self": {"href":
+        "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/564577f886c27328ade7faf0"}},
+        "allowed": "CREDIT-AND-DEBIT", "extra": {"supp_id": "123456"}, "info": {"balance":
+        {"amount": 10000.0, "currency": "USD"}, "name_on_account": "Javier Julio",
+        "nickname": "My Integration Test Synapse Wallet"}, "is_active": true, "type":
+        "SYNAPSE-US"}], "page": 1, "page_count": 1, "success": true}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 19:00:53 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes
+    body:
+      encoding: UTF-8
+      string: '{"type":"SYNAPSE-US","info":{"nickname":"My Integration Test Synapse
+        Wallet"},"extra":{"supp_id":123456}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.1.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Nov 2015 18:48:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: UTF-8
+      string: '{"error_code": "0", "http_code": "200", "nodes": [{"_id": "5646308786c2731057b4c3b7",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/5646308786c2731057b4c3b7"}},
+        "allowed": "CREDIT-AND-DEBIT", "extra": {"supp_id": "123456"}, "info": {"balance":
+        {"amount": 10000.0, "currency": "USD"}, "name_on_account": "Javier Julio",
+        "nickname": "My Integration Test Synapse Wallet"}, "is_active": true, "type":
+        "SYNAPSE-US"}], "success": true}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 18:48:39 GMT
+recorded_with: VCR 2.9.3

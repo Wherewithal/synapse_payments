@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes
+    body:
+      encoding: UTF-8
+      string: '{"type":"ACH-US","info":{"nickname":"John Doe","name_on_account":"John
+        Doe","account_num":"72347235423","routing_num":"051000017","type":"PERSONAL","class":"CHECKING"},"extra":{"supp_id":null}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.1.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Nov 2015 18:29:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: UTF-8
+      string: '{"error_code": "0", "http_code": "200", "nodes": [{"_id": "564566d986c2733114a91cca",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/564566d986c2733114a91cca"}},
+        "allowed": "CREDIT", "extra": {"supp_id": "None"}, "info": {"account_num":
+        "5423", "bank_long_name": "BANK OF AMERICA, N.A.", "class": "CHECKING", "name_on_account":
+        "John Doe", "nickname": "John Doe", "routing_num": "0017", "type": "PERSONAL"},
+        "is_active": true, "type": "ACH-US"}], "success": true}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 18:29:56 GMT
+recorded_with: VCR 2.9.3

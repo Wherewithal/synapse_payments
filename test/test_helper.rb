@@ -24,8 +24,8 @@ end
 
 def authenticated_client
   SynapsePayments::Client.new do |config|
-    config.client_id = ENV['SYNAPSE_PAYMENTS_CLIENT_ID'] || 'client_id'
-    config.client_secret = ENV['SYNAPSE_PAYMENTS_CLIENT_SECRET'] || 'client_secret'
+    config.client_id = ENV.fetch('SYNAPSE_PAYMENTS_CLIENT_ID')
+    config.client_secret = ENV.fetch('SYNAPSE_PAYMENTS_CLIENT_SECRET')
   end
 end
 

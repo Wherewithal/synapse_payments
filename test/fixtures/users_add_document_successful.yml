@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1
+    body:
+      encoding: UTF-8
+      string: '{"doc":{"birth_day":14,"birth_month":3,"birth_year":1970,"name_first":"John","name_last":"Doe","address_street1":"`1
+        Infinite Loop","address_postal_code":"95014","address_country_code":"US","document_type":"SSN","document_value":"2222"}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.1.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Nov 2015 18:18:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: UTF-8
+      string: '{"_id": "5641019d86c273308e8193f1", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1"}},
+        "client": {"id": 1231, "name": "Jackpocket Sandbox"}, "doc_status": {"physical_doc":
+        "MISSING|INVALID", "virtual_doc": "SUBMITTED|VALID"}, "extra": {"date_joined":
+        1447100829635, "extra_security": true, "is_business": false, "supp_id": "123"},
+        "is_hidden": false, "legal_names": ["Javier Julio"], "logins": [{"email":
+        "javier@jackpocket.com", "read_only": false}], "permission": "RECEIVE", "phone_numbers":
+        ["646-123-4567"], "photos": [], "refresh_token": "refresh-95452209-3b1c-4165-a4a2-021ee96cdd32"}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 18:18:26 GMT
+recorded_with: VCR 2.9.3

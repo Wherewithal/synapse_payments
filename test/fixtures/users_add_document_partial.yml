@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1
+    body:
+      encoding: UTF-8
+      string: '{"doc":{"birth_day":14,"birth_month":3,"birth_year":1970,"name_first":"John","name_last":"Doe","address_street1":"`1
+        Infinite Loop","address_postal_code":"95014","address_country_code":"US","document_type":"SSN","document_value":"3333"}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.1.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Nov 2015 18:17:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+    body:
+      encoding: UTF-8
+      string: '{"error_code": "10", "http_code": "202", "message": {"en": "Document
+        information submitted. Please answer the attached KBA questions."}, "question_set":
+        {"created_at": 1447438679, "expired": false, "id": "564629576663320003000435",
+        "livemode": false, "object": "question_set", "person_id": "564629563531330003000476",
+        "questions": [{"answers": [{"answer": "430 Dwight", "id": 1}, {"answer": "309
+        Colver Rd", "id": 2}, {"answer": "123 Main St", "id": 3}, {"answer": "221
+        Wolf Lake", "id": 4}, {"answer": "None Of The Above", "id": 5}], "id": 1,
+        "question": "Which one of the following addresses is associated with you?"},
+        {"answers": [{"answer": "308", "id": 1}, {"answer": "812", "id": 2}, {"answer":
+        "870", "id": 3}, {"answer": "336", "id": 4}, {"answer": "None Of The Above",
+        "id": 5}], "id": 2, "question": "Which one of the following area codes is
+        associated with you?"}, {"answers": [{"answer": "California", "id": 1}, {"answer":
+        "Kentucky", "id": 2}, {"answer": "Utah", "id": 3}, {"answer": "Oregon", "id":
+        4}, {"answer": "None Of The Above", "id": 5}], "id": 3, "question": "What
+        state was your SSN issued in?"}, {"answers": [{"answer": "49230", "id": 1},
+        {"answer": "49993", "id": 2}, {"answer": "49532", "id": 3}, {"answer": "49728",
+        "id": 4}, {"answer": "None Of The Above", "id": 5}], "id": 4, "question":
+        "Which one of the following zip codes is associated with you?"}, {"answers":
+        [{"answer": "El Paso", "id": 1}, {"answer": "Niagara", "id": 2}, {"answer":
+        "Jasper", "id": 3}, {"answer": "Schoharie", "id": 4}, {"answer": "None Of
+        The Above", "id": 5}], "id": 5, "question": "Which one of the following counties
+        is associated with you?"}], "score": null, "time_limit": 0, "updated_at":
+        1447438679}, "success": true}'
+    http_version:
+  recorded_at: Fri, 13 Nov 2015 18:17:59 GMT
+recorded_with: VCR 2.9.3
