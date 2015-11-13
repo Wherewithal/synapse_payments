@@ -3,9 +3,9 @@
 ```ruby
 require 'synapse_payments'
 
-client = SynapsePayments::Client.new client_id: 'your_client_id', client_secret: 'your_client_id', sandbox_mode: false
+client = SynapsePayments::Client.new(client_id: 'client_id', client_secret: 'client_secret')
 
-# or configure with a block
+# or configure with a block (note: sandbox_mode is true by default)
 
 client = SynapsePayments::Client.new do |config|
   config.client_id = 'your_client_id'
@@ -25,7 +25,11 @@ response = client.users.all
 #### Create a user
 
 ```ruby
-response = client.users.create(name: 'John Smith', email: 'johnsmith@example.com', phone: '123-456-7890')
+response = client.users.create(
+  name: 'John Smith', 
+  email: 'johnsmith@example.com', 
+  phone: '123-456-7890'
+)
 
 # or specify multiple names, logins, phones...
 
