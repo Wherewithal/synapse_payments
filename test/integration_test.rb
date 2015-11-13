@@ -50,7 +50,7 @@ class IntegrationTest < Minitest::Test
       birthdate: Date.parse('1970/3/14'),
       first_name: 'John',
       last_name: 'Doe',
-      street: '`1 Infinite Loop',
+      street: '1 Infinite Loop',
       postal_code: '95014',
       country_code: 'US',
       document_type: 'SSN',

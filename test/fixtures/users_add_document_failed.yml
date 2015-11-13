@@ -5,7 +5,7 @@ http_interactions:
     uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1
     body:
       encoding: UTF-8
-      string: '{"doc":{"birth_day":14,"birth_month":3,"birth_year":1970,"name_first":"John","name_last":"Doe","address_street1":"`1
+      string: '{"doc":{"birth_day":14,"birth_month":3,"birth_year":1970,"name_first":"John","name_last":"Doe","address_street1":"1
         Infinite Loop","address_postal_code":"95014","address_country_code":"US","document_type":"SSN","document_value":"1111"}}'
     headers:
       Accept:
