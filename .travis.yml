@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.1.5
+  - 2.2.3
+before_install: gem install bundler -v 1.10.6
+cache: bundler
+sudo: false
+fast_finish: true
+env:
+  - USER_ID=
+notifications:
+  email:
+    on_success: always
+    on_failure: always
