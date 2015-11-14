@@ -36,7 +36,7 @@ class IntegrationTest < Minitest::Test
 
     refute_predicate user[:_id], :empty?
     refute_predicate user[:refresh_token], :empty?
-    assert_equal ['Javier Julio'], user[:legal_names]
+    refute_predicate user[:legal_names], :empty?
   end
 
   def test_authenticate_as
@@ -61,13 +61,16 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_answer_kba
-    user = @user_client.answer_kba(question_set_id: "557520ad343463000300005a", answers: [
-			{ question_id: 1, answer_id: 1 },
-			{ question_id: 2, answer_id: 1 },
-			{ question_id: 3, answer_id: 1 },
-			{ question_id: 4, answer_id: 1 },
-			{ question_id: 5, answer_id: 1 }
-    ])
+    user = @user_client.answer_kba(
+      question_set_id: "557520ad343463000300005a",
+      answers: [
+  			{ question_id: 1, answer_id: 1 },
+  			{ question_id: 2, answer_id: 1 },
+  			{ question_id: 3, answer_id: 1 },
+  			{ question_id: 4, answer_id: 1 },
+  			{ question_id: 5, answer_id: 1 }
+      ]
+    )
 
     puts '--- test_answer_kba',user,''
   end
@@ -85,28 +88,11 @@ class IntegrationTest < Minitest::Test
 
   def test_add_instant_verified_bank_account
     bank = @user_client.add_bank_account(name: 'John Doe', account_number: '123456786', routing_number: '051000017', category: 'PERSONAL', type: 'CHECKING')
-    puts '---- add_bank_account',bank,''
+    puts '---- test_add_instant_verified_bank_account',bank,''
     @user_client.nodes.delete(bank[:nodes].first[:_id])
   end
 
-  def test_create_node
-    data = {
-      type: 'SYNAPSE-US',
-      info: {
-        nickname: 'My Integration Test Synapse Wallet'
-      },
-      extra: {
-        supp_id: 123456
-      }
-    }
-
-    node = @user_client.nodes.create(data)
-    puts '---- create_node',node,''
-
-    @user_client.nodes.delete(node[:nodes].first[:_id])
-  end
-
-  def test_send_money
+  def test_sending_money
     data = {
       type: 'SYNAPSE-US',
       info: {
