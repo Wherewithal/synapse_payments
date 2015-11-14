@@ -33,11 +33,6 @@ module SynapsePayments
       @client.get(path: "/users/#{id}")
     end
 
-#     def find_and_authenticate_as(id)
-#       user = find(id)
-#       authenticate_as(id: user[:_id], refresh_token: user[:refresh_token])
-#     end
-
   end
 
 end

@@ -22,6 +22,17 @@ module SynapsePayments
       @client.get(path: "/users/#{@user_id}", oauth_key: @oauth_key)
     end
 
+    # Adds a virtual document for KYC
+    #
+    # @param birthdate [Date]
+    # @param first_name [String]
+    # @param last_name [String]
+    # @param street [String]
+    # @param postal_code [String]
+    # @param country_code [String] The country code in ISO format e.g. US
+    # @param document_type [String] Acceptable document types: SSN, PASSPORT, DRIVERS_LICENSE, PERSONAL_IDENTIFICATION, NONE
+    # @param document_value [String]
+    # @return [Hash]
     def add_document(birthdate:, first_name:, last_name:, street:, postal_code:, country_code:, document_type:, document_value:)
       data = {
         doc: {
