@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jjfutbol@gmail.com"]
 
   spec.summary       = "A tested Ruby interface to the SynapsePay v3 API."
-  spec.description   = "Requires Ruby 2.1 and up. Not all API actions are supported. Find out more in the TODO section."
+  spec.description   = "Requires Ruby 2.1 and up. Not all API actions are supported. Find out more in the readme todo section."
   spec.homepage      = "https://github.com/javierjulio/synapse_payments"
   spec.license       = "MIT"
 
