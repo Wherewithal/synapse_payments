@@ -117,7 +117,7 @@ class IntegrationTest < Minitest::Test
 
     node2 = @user_client.nodes.create(data)
 
-    transaction = @user_client.send_money(from: node[:nodes].first[:_id], to: node2[:nodes].first[:_id], to_node_type: 'SYNAPSE-US', amount: 24.00, currency: 'USD', ip_address: '192.168.0.1')
+    transaction = @user_client.send_money(from: node[:nodes].first[:_id], to: node2[:nodes].first[:_id], to_node_type: 'SYNAPSE-US', amount: 24.00, currency: 'USD', ip_address: '192.168.0.1', supp_id: 'abc123')
 
     puts '---- test_send_money_to',transaction,''
 

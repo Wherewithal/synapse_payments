@@ -89,8 +89,8 @@ module SynapsePayments
       nodes.create(data)
     end
 
-    def send_money(from:, to:, to_node_type:, amount:, currency:, ip_address:)
-      nodes(from).transactions.create(node_id: to, node_type: to_node_type, amount: amount, currency: currency, ip_address: ip_address)
+    def send_money(from:, to:, to_node_type:, amount:, currency:, ip_address:, **args)
+      nodes(from).transactions.create(node_id: to, node_type: to_node_type, amount: amount, currency: currency, ip_address: ip_address, **args)
     end
 
     def nodes(id=nil)
