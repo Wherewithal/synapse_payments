@@ -56,7 +56,19 @@ response = client.users.find(id)
 
 user_client = client.users.authenticate_as(id: id, refresh_token: response[:refresh_token])
 
+user_client.refresh_token 
+# => "refresh-459..."
+
+user_client.expires_in    
+# => "7200"
+
 user = user_client.user # returns user representation
+
+user[:_id]
+# => "93f1..."
+
+user[:legal_names]
+# => ["Javier Julio"]
 ```
 
 #### Update a user
