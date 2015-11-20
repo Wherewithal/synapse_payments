@@ -1,9 +1,10 @@
 module SynapsePayments
   class UserClient
 
-    def initialize(client, user_id, response)
+    def initialize(client, user_id, fingerprint, response)
       @client = client
       @user_id = user_id
+      @fingerprint = fingerprint
       @response = response
       @oauth_key = response[:oauth_key]
 
@@ -15,7 +16,7 @@ module SynapsePayments
         end
       end
 
-      @nodes = Nodes.new(@client, user_id, oauth_key)
+      @nodes = Nodes.new(@client, user_id, oauth_key, fingerprint)
     end
 
     def user
@@ -49,7 +50,7 @@ module SynapsePayments
         }
       }
 
-      @client.patch(path: "/users/#{@user_id}", oauth_key: @oauth_key, json: data)
+      @client.patch(path: "/users/#{@user_id}", oauth_key: @oauth_key, fingerprint: @fingerprint, json: data)
     end
 
     def answer_kba(question_set_id:, answers:)
@@ -60,7 +61,7 @@ module SynapsePayments
         }
       }
 
-      @client.patch(path: "/users/#{@user_id}", oauth_key: @oauth_key, json: data)
+      @client.patch(path: "/users/#{@user_id}", oauth_key: @oauth_key, fingerprint: @fingerprint, json: data)
     end
 
     # Adds a bank account by creating a node of node type ACH-US.
@@ -97,7 +98,7 @@ module SynapsePayments
       if id.nil?
         @nodes
       else
-        Node.new(@client, @user_id, id, @oauth_key)
+        Node.new(@client, @user_id, id, @oauth_key, @fingerprint)
       end
     end
 

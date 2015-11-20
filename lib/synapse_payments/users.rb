@@ -9,12 +9,12 @@ module SynapsePayments
       @client.get(path: '/users')
     end
 
-    def authenticate_as(id:, refresh_token:)
-      response = @client.post(path: "/oauth/#{id}", json: { refresh_token: refresh_token })
-      UserClient.new(@client, id, response)
+    def authenticate_as(id:, refresh_token:, fingerprint: nil)
+      response = @client.post(path: "/oauth/#{id}", fingerprint: fingerprint, json: { refresh_token: refresh_token })
+      UserClient.new(@client, id, fingerprint, response)
     end
 
-    def create(name:, email:, phone:, is_business: false, **args)
+    def create(name:, email:, phone:, fingerprint: nil, is_business: false, **args)
       data = {
         logins: email.is_a?(Array) ? email : [{ email: email }],
         phone_numbers: phone.is_a?(Array) ? phone : [phone],
@@ -26,7 +26,7 @@ module SynapsePayments
         }
       }
 
-      @client.post(path: '/users', json: data)
+      @client.post(path: '/users', json: data, fingerprint: fingerprint)
     end
 
     def find(id)

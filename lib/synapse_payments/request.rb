@@ -8,11 +8,12 @@ module SynapsePayments
       'X-Ruby-Platform' => RUBY_PLATFORM
     }
 
-    def initialize(client:, method:, path:, oauth_key: nil, json: nil)
+    def initialize(client:, method:, path:, oauth_key: nil, fingerprint: nil, json: nil)
       @client = client
       @method = method
       @path = path
       @oauth_key = oauth_key
+      @fingerprint = fingerprint
       @json = json
     end
 
@@ -23,10 +24,12 @@ module SynapsePayments
       fail_or_return_response_body(response.code, response_body)
     end
 
+    private
+
     def http_client
       headers = HEADERS.merge({
         'X-SP-GATEWAY' => "#{@client.client_id}|#{@client.client_secret}",
-        'X-SP-USER' => "#{@oauth_key}|",
+        'X-SP-USER' => "#{@oauth_key}|#{@fingerprint}",
         'X-SP-USER-IP' => ''
       })
       HTTP.headers(headers).timeout(write: 2, connect: 5, read: 10)

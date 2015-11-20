@@ -28,7 +28,8 @@ response = client.users.all
 response = client.users.create(
   name: 'John Smith', 
   email: 'johnsmith@example.com', 
-  phone: '123-456-7890'
+  phone: '123-456-7890',
+  fingerprint: 'abc123' # optional but recommended
 )
 
 # or specify multiple names, logins, phones...

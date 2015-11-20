@@ -40,20 +40,20 @@ module SynapsePayments
       credentials.values.all?
     end
 
-    def get(path:, oauth_key: nil)
-      Request.new(client: self, method: :get, path: path, oauth_key: oauth_key).perform
+    def get(path:, oauth_key: nil, fingerprint: nil)
+      Request.new(client: self, method: :get, path: path, oauth_key: oauth_key, fingerprint: fingerprint).perform
     end
 
-    def post(path:, json:, oauth_key: nil)
-      Request.new(client: self, method: :post, path: path, oauth_key: oauth_key, json: json).perform
+    def post(path:, json:, oauth_key: nil, fingerprint: nil)
+      Request.new(client: self, method: :post, path: path, oauth_key: oauth_key, fingerprint: fingerprint, json: json).perform
     end
 
-    def patch(path:, json:, oauth_key: nil)
-      Request.new(client: self, method: :patch, path: path, oauth_key: oauth_key, json: json).perform
+    def patch(path:, json:, oauth_key: nil, fingerprint: nil)
+      Request.new(client: self, method: :patch, path: path, oauth_key: oauth_key, fingerprint: fingerprint, json: json).perform
     end
 
-    def delete(path:, oauth_key: nil)
-      Request.new(client: self, method: :delete, path: path, oauth_key: oauth_key).perform
+    def delete(path:, oauth_key: nil, fingerprint: nil)
+      Request.new(client: self, method: :delete, path: path, oauth_key: oauth_key, fingerprint: fingerprint).perform
     end
 
   end

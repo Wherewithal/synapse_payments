@@ -39,6 +39,62 @@ class IntegrationTest < Minitest::Test
     refute_predicate user[:legal_names], :empty?
   end
 
+  def test_create_user_with_fingerprint
+    user = authenticated_client.users.create(name: 'Test Test', email: 'test@test.com', phone: '123-456-8790', fingerprint: 'abc123')
+    user_client = authenticated_client.users.authenticate_as(id: user[:_id], refresh_token: user[:refresh_token], fingerprint: 'abc123')
+
+    response = user_client.nodes.all
+    assert response[:success]
+
+    bank = user_client.add_bank_account(
+      name: 'John Doe',
+      account_number: '123456786',
+      routing_number: '051000017',
+      category: 'PERSONAL',
+      type: 'CHECKING'
+    )
+    assert bank[:success]
+
+    node_id = bank[:nodes].first[:_id]
+
+    response = user_client.nodes(node_id).transactions.all
+    assert response[:success]
+
+    data = {
+      type: 'SYNAPSE-US',
+      info: {
+        nickname: 'My First Integration Test Synapse Wallet'
+      },
+      extra: {
+        supp_id: 123456
+      }
+    }
+
+    node = user_client.nodes.create(data)
+
+    data = {
+      type: 'SYNAPSE-US',
+      info: {
+        nickname: 'My Second Integration Test Synapse Wallet'
+      },
+      extra: {
+        supp_id: 12345678
+      }
+    }
+
+    node2 = user_client.nodes.create(data)
+
+    transaction = user_client.send_money(
+      from: node[:nodes].first[:_id],
+      to: node2[:nodes].first[:_id],
+      to_node_type: 'SYNAPSE-US',
+      amount: 24.00,
+      currency: 'USD',
+      ip_address: '192.168.0.1',
+      supp_id: '4321'
+    )
+  end
+
   def test_authenticate_as
     user_client = authenticated_client.users.authenticate_as(id: @user_id, refresh_token: @user[:refresh_token])
 
