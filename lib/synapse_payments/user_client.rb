@@ -16,7 +16,7 @@ module SynapsePayments
         end
       end
 
-      @nodes = Nodes.new(@client, user_id, oauth_key, fingerprint)
+      @nodes = Nodes.new(@client, @user_id, @oauth_key, @fingerprint)
     end
 
     def user
