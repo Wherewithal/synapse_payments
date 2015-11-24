@@ -43,6 +43,11 @@ class IntegrationTest < Minitest::Test
     user = authenticated_client.users.create(name: 'Test Test', email: 'test@test.com', phone: '123-456-8790', fingerprint: 'abc123')
     user_client = authenticated_client.users.authenticate_as(id: user[:_id], refresh_token: user[:refresh_token], fingerprint: 'abc123')
 
+    refute_nil user_client.expires_at
+    refute_nil user_client.expires_in
+    refute_nil user_client.refresh_expires_in
+    refute_nil user_client.refresh_token
+
     response = user_client.nodes.all
     assert response[:success]
 
