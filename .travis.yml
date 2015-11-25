@@ -7,9 +7,7 @@ cache: bundler
 sudo: false
 fast_finish: true
 env:
-  - USER_ID=
-  - SYNAPSE_PAYMENTS_CLIENT_ID=
-  - SYNAPSE_PAYMENTS_CLIENT_SECRET=
+  - USER_ID= SYNAPSE_PAYMENTS_CLIENT_ID= SYNAPSE_PAYMENTS_CLIENT_SECRET=
 notifications:
   email:
     on_success: always
