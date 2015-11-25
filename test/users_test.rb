@@ -8,7 +8,7 @@ class UsersTest < Minitest::Test
 
   def test_users_all
     VCR.use_cassette('users_all') do
-      users = authenticated_client.users.all
+      users = test_client.users.all
 
       assert_equal '200', users[:http_code]
       assert_equal '0', users[:error_code]
@@ -21,7 +21,7 @@ class UsersTest < Minitest::Test
     user_id = '5641019d86c273308e8193f1'
 
     VCR.use_cassette('users_find') do
-      user = authenticated_client.users.find(user_id)
+      user = test_client.users.find(user_id)
 
       assert_equal user_id, user[:_id]
       assert_equal 'refresh-95452209-3b1c-4165-a4a2-021ee96cdd32', user[:refresh_token]
@@ -34,7 +34,7 @@ class UsersTest < Minitest::Test
     refresh_token = 'refresh-95452209-3b1c-4165-a4a2-021ee96cdd32'
 
     VCR.use_cassette('oauth_refresh_token') do
-      user_client = authenticated_client.users.authenticate_as(id: user_id, refresh_token: refresh_token)
+      user_client = test_client.users.authenticate_as(id: user_id, refresh_token: refresh_token)
 
       assert_equal refresh_token, user_client.refresh_token
       assert_equal '1447445562', user_client.expires_at
