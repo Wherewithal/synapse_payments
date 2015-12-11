@@ -1,5 +1,3 @@
-require 'mime/types'
-
 module SynapsePayments
   class UserClient
 
@@ -68,7 +66,7 @@ module SynapsePayments
 
     def attach_file(file_path)
       file_contents = open(file_path) { |f| f.read }
-      file_type = ::MIME::Types.type_for(file_path).first.content_type
+      file_type = MIME::Types.type_for(file_path).first.content_type
 
       data = {
         doc: {
