@@ -28,5 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "webmock"
 
   spec.add_dependency "http", '~> 0.9.8'
+  spec.add_dependency "mime-types", '~> 3.0'
 
 end
