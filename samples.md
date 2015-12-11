@@ -106,9 +106,11 @@ response = user_client.answer_kba(
 )
 ```
 
-#### Attach photo ID
+#### Attach photo ID or another file type
 
-NOTE: Action needs to be implemented.
+```ruby
+response = user_client.attach_file(full_file_path)
+```
 
 #### Add a bank account
 

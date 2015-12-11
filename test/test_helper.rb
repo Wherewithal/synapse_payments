@@ -15,6 +15,12 @@ end
 
 Minitest::Reporters.use!([Minitest::Reporters::SpecReporter.new])
 
+TEST_ROOT = File.dirname(File.expand_path('.', __FILE__))
+
+def fixture_path(file_name)
+  "#{TEST_ROOT}/fixtures/#{file_name}"
+end
+
 def test_client
   SynapsePayments::Client.new do |config|
     config.client_id = 'client_id'

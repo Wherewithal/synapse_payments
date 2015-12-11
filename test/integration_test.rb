@@ -118,12 +118,23 @@ class IntegrationTest < Minitest::Test
       document_value: '2222'
     )
 
-    puts '--- test_add_document_successful',user,''
+    refute_predicate user[:_id], :empty?
   end
 
-  def test_answer_kba
+  def test_add_document_with_kba_answer
+    response = @user_client.add_document(
+      birthdate: Date.parse('1970/3/14'),
+      first_name: 'John',
+      last_name: 'Doe',
+      street: '1 Infinite Loop',
+      postal_code: '95014',
+      country_code: 'US',
+      document_type: 'SSN',
+      document_value: '3333'
+    )
+
     user = @user_client.answer_kba(
-      question_set_id: "557520ad343463000300005a",
+      question_set_id: response[:question_set][:id],
       answers: [
   			{ question_id: 1, answer_id: 1 },
   			{ question_id: 2, answer_id: 1 },
@@ -132,8 +143,27 @@ class IntegrationTest < Minitest::Test
   			{ question_id: 5, answer_id: 1 }
       ]
     )
+  end
 
-    puts '--- test_answer_kba',user,''
+  def test_add_document_failure_with_attached_photo_id
+    begin
+      response = @user_client.add_document(
+        birthdate: Date.parse('1970/3/14'),
+        first_name: 'John',
+        last_name: 'Doe',
+        street: '1 Infinite Loop',
+        postal_code: '95014',
+        country_code: 'US',
+        document_type: 'SSN',
+        document_value: '1111'
+      )
+    rescue SynapsePayments::Error::Conflict => error
+      # no identity found, validation not possible, submit photo ID
+    end
+
+    user = @user_client.attach_file(fixture_path('image.png'))
+
+    refute_predicate user[:_id], :empty?
   end
 
   def test_nodes_all

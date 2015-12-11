@@ -46,9 +46,10 @@ Check out [samples.md](samples.md) to review how to use this library.
 
 * add pagination/querying to `users.all`, `nodes.all`, and `transactions.all`
 * add support for new `subscriptions` resource
-* add new methods to UserClient: `link_bank_account`, `verify_mfa`, `attach_photo_id`, `add_escrow_account`
+* add new methods to UserClient: `link_bank_account`, `verify_mfa`, `add_escrow_account`, etc.
 * add `Banks` object with `list` method which returns supported banks from https://synapsepay.com/api/v3/institutions/show
 * consider creating a `Response` object wrapper
+* clean up object/folder structure
 
 ### Tests
 
