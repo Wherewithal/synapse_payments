@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://synapsepay.com/api/v3/institutions/show
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - synapsepay.com
+      User-Agent:
+      - http.rb/0.9.8
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 22 Dec 2015 20:48:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: UTF-8
+      string: '{"banks": [{"bank_code": "ally", "bank_name": "Ally", "logo": "https://cdn.synapsepay.com/bank_logos/ally.png"},
+        {"bank_code": "bofa", "bank_name": "Bank of America", "logo": "https://cdn.synapsepay.com/bank_logos/bofa.png"},
+        {"bank_code": "bbt", "bank_name": "BB&T Bank", "logo": "https://cdn.synapsepay.com/bank_logos/bbt.png"},
+        {"bank_code": "capone360", "bank_name": "Capital One 360", "logo": "https://cdn.synapsepay.com/bank_logos/cap360.png"},
+        {"bank_code": "schwab", "bank_name": "Charles Schwab", "logo": "https://cdn.synapsepay.com/bank_logos/charles_schwab.png"},
+        {"bank_code": "chase", "bank_name": "Chase", "logo": "https://cdn.synapsepay.com/bank_logos/chase.png"},
+        {"bank_code": "citi", "bank_name": "Citibank", "logo": "https://cdn.synapsepay.com/bank_logos/citi.png"},
+        {"bank_code": "fidelity", "bank_name": "Fidelity", "logo": "https://cdn.synapsepay.com/bank_logos/fidelity.png"},
+        {"bank_code": "firsttennessee", "bank_name": "First Tennessee", "logo": "https://cdn.synapsepay.com/bank_logos/first_tn.png"},
+        {"bank_code": "pnc", "bank_name": "PNC", "logo": "https://cdn.synapsepay.com/bank_logos/pnc.png"},
+        {"bank_code": "regions", "bank_name": "Regions", "logo": "https://cdn.synapsepay.com/bank_logos/regionsbank.png"},
+        {"bank_code": "suntrust", "bank_name": "SunTrust", "logo": "https://cdn.synapsepay.com/bank_logos/suntrust.png"},
+        {"bank_code": "td", "bank_name": "TD Bank", "logo": "https://cdn.synapsepay.com/bank_logos/td.png"},
+        {"bank_code": "us", "bank_name": "US Bank", "logo": "https://cdn.synapsepay.com/bank_logos/usbank.png"},
+        {"bank_code": "usaa", "bank_name": "USAA", "logo": "https://cdn.synapsepay.com/bank_logos/usaa.png"},
+        {"bank_code": "wells", "bank_name": "Wells Fargo", "logo": "https://cdn.synapsepay.com/bank_logos/wells_fargo.png"}],
+        "success": true}'
+    http_version: 
+  recorded_at: Tue, 22 Dec 2015 20:48:25 GMT
+recorded_with: VCR 2.9.3
