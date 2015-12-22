@@ -28,6 +28,16 @@ def test_client
   end
 end
 
+def test_user_client(user_id:)
+  SynapsePayments::UserClient.new(test_client, user_id, nil, {
+    oauth_key: 'oauth_key',
+    refresh_token: 'refresh_token',
+    expires_at: '1447445562',
+    expires_in: '7200',
+    refresh_expires_in: 12
+  })
+end
+
 def authenticated_client
   SynapsePayments::Client.new do |config|
     config.client_id = ENV.fetch('SYNAPSE_PAYMENTS_CLIENT_ID')
