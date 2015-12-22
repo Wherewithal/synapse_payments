@@ -138,6 +138,29 @@ response = user_client.add_bank_account(
 )
 ```
 
+#### Bank account login
+
+The following could return a list of nodes (bank accounts) or MFA question.
+
+```ruby
+response = user_client.bank_login(
+  bank_id: 'bofa', # from bank_code at https://synapsepay.com/api/v3/institutions/show
+  username: 'username',
+  password: 'password'
+)
+```
+
+#### Verify MFA for bank account login
+
+Note that this is an additional step for some banks, since not all support MFA.
+
+```ruby
+response = user_client.verify_mfa(
+  access_token: '8MNcKv1blk...', # returned in previous bank_login call
+  answer: 'your answer'
+)
+```
+
 #### Send money 💸
 
 ```ruby

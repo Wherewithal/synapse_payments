@@ -103,6 +103,28 @@ module SynapsePayments
       nodes.create(data)
     end
 
+    def bank_login(bank_name:, username:, password:)
+      data = {
+        type: 'ACH-US',
+        info: {
+          bank_id: username,
+          bank_pw: password,
+          bank_name: bank_name
+        }
+      }
+
+      nodes.create(data)
+    end
+
+    def verify_mfa(access_token:, answer:)
+      data = {
+        access_token: access_token,
+        mfa_answer: answer
+      }
+
+      nodes.create(data)
+    end
+
     def send_money(from:, to:, to_node_type:, amount:, currency:, ip_address:, **args)
       nodes(from).transactions.create(node_id: to, node_type: to_node_type, amount: amount, currency: currency, ip_address: ip_address, **args)
     end

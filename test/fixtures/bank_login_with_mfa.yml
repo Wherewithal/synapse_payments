@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes
+    body:
+      encoding: UTF-8
+      string: '{"type":"ACH-US","info":{"bank_id":"synapse_good","bank_pw":"test1234","bank_name":"fake"}}'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.3.1
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - oauth_key|
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 21 Dec 2015 23:47:13 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - ALLOWALL
+    body:
+      encoding: UTF-8
+      string: '{"error_code": "10", "http_code": "202", "mfa": {"access_token": "271b8ff8a3e73bc9f5d084f34ff4a377acf5544c3a4d021917f1f29052fbbf5d",
+        "message": "I heard you like questions so we put a question in your question?"},
+        "success": true}'
+    http_version:
+  recorded_at: Mon, 21 Dec 2015 23:47:13 GMT
+recorded_with: VCR 2.9.3
