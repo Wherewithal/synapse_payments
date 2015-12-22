@@ -14,6 +14,20 @@ client = SynapsePayments::Client.new do |config|
 end
 ```
 
+### Institutions
+
+#### Retrieve all supported banks for login
+
+```ruby
+response = client.institutions
+
+response.size
+# => 16
+
+response[1][:bank_name]
+# => "Bank of America"
+```
+
 ### Users
 
 #### Retrieve all users (paginated)
