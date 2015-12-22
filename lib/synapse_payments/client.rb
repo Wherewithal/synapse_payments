@@ -40,6 +40,13 @@ module SynapsePayments
       credentials.values.all?
     end
 
+    # @return [Array]
+    def institutions
+      institutions = HTTP.get('https://synapsepay.com/api/v3/institutions/show').parse
+      symbolize_keys!(institutions)
+      institutions[:banks]
+    end
+
     def get(path:, oauth_key: nil, fingerprint: nil)
       Request.new(client: self, method: :get, path: path, oauth_key: oauth_key, fingerprint: fingerprint).perform
     end
@@ -54,6 +61,19 @@ module SynapsePayments
 
     def delete(path:, oauth_key: nil, fingerprint: nil)
       Request.new(client: self, method: :delete, path: path, oauth_key: oauth_key, fingerprint: fingerprint).perform
+    end
+
+    def symbolize_keys!(object)
+      if object.is_a?(Array)
+        object.each_with_index do |val, index|
+          object[index] = symbolize_keys!(val)
+        end
+      elsif object.is_a?(Hash)
+        object.keys.each do |key|
+          object[key.to_sym] = symbolize_keys!(object.delete(key))
+        end
+      end
+      object
     end
 
   end

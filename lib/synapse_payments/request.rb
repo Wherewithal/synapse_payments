@@ -20,7 +20,7 @@ module SynapsePayments
     def perform
       options_key = @method == :get ? :params : :json
       response = http_client.public_send(@method, "#{@client.api_base}#{@path}", options_key => @json)
-      response_body = symbolize_keys!(response.parse)
+      response_body = @client.symbolize_keys!(response.parse)
       fail_or_return_response_body(response.code, response_body)
     end
 
@@ -33,19 +33,6 @@ module SynapsePayments
         'X-SP-USER-IP' => ''
       })
       HTTP.headers(headers).timeout(write: 2, connect: 5, read: 10)
-    end
-
-    def symbolize_keys!(object)
-      if object.is_a?(Array)
-        object.each_with_index do |val, index|
-          object[index] = symbolize_keys!(val)
-        end
-      elsif object.is_a?(Hash)
-        object.keys.each do |key|
-          object[key.to_sym] = symbolize_keys!(object.delete(key))
-        end
-      end
-      object
     end
 
     def fail_or_return_response_body(code, body)
