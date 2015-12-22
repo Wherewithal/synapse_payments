@@ -22,6 +22,14 @@ class IntegrationTest < Minitest::Test
     enable_vcr!
   end
 
+  def test_institutions
+    response = authenticated_client.institutions
+
+    assert_equal 16, response.size
+    assert_equal 'Ally', response[0][:bank_name]
+    assert_equal 'Bank of America', response[1][:bank_name]
+  end
+
   def test_users_all
     users = authenticated_client.users.all
 
