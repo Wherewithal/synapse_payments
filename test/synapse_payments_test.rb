@@ -44,6 +44,11 @@ class SynapsePaymentsTest < Minitest::Test
     assert_equal client.api_base, 'https://synapsepay.com/api/3'
   end
 
+  def test_credentials
+    credentials = { client_id: 'client_id', client_secret: 'client_secret' }
+    assert_equal credentials, test_client.credentials
+  end
+
   def test_credentials?
     assert test_client.credentials?
 
