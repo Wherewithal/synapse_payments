@@ -177,6 +177,7 @@ class IntegrationTest < Minitest::Test
     assert_equal 'CHECKING', response[:nodes][0][:info][:class]
     assert_equal '5423', response[:nodes][0][:info][:account_num]
     assert_equal '0017', response[:nodes][0][:info][:routing_num]
+    assert_equal 'ACH-US', response[:nodes][0][:type]
 
     @user_client.nodes.delete(response[:nodes].first[:_id])
   end
