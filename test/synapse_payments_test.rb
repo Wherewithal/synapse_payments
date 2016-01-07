@@ -10,12 +10,14 @@ class SynapsePaymentsTest < Minitest::Test
     client = SynapsePayments::Client.new(
       client_id: 'client_id',
       client_secret: 'client_secret',
-      sandbox_mode: false
+      sandbox_mode: false,
+      timeout_options: { connect: 30 }
     )
 
     assert_equal client.client_id, 'client_id'
     assert_equal client.client_secret, 'client_secret'
     assert_equal client.sandbox_mode, false
+    assert_equal client.timeout_options, { connect: 30 }
     assert client.credentials?
   end
 
