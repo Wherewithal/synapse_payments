@@ -6,7 +6,7 @@ module SynapsePayments
     API_TEST = 'https://sandbox.synapsepay.com/api/3'
     API_LIVE = 'https://synapsepay.com/api/3'
 
-    attr_accessor :client_id, :client_secret, :sandbox_mode
+    attr_accessor :client_id, :client_secret, :sandbox_mode, :timeout_options
     attr_reader :api_base, :users
 
     # Initializes a new Client object
@@ -22,6 +22,7 @@ module SynapsePayments
 
       yield(self) if block_given?
 
+      @timeout_options ||= { write: 2, connect: 5, read: 10 }
       @api_base = @sandbox_mode ? API_TEST : API_LIVE
 
       @users = Users.new(self)

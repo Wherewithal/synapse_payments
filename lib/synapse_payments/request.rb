@@ -32,7 +32,7 @@ module SynapsePayments
         'X-SP-USER' => "#{@oauth_key}|#{@fingerprint}",
         'X-SP-USER-IP' => ''
       })
-      HTTP.headers(headers).timeout(write: 2, connect: 5, read: 10)
+      HTTP.headers(headers).timeout(@client.timeout_options)
     end
 
     def fail_or_return_response_body(code, body)
