@@ -7,7 +7,7 @@ module SynapsePayments
     API_LIVE = 'https://synapsepay.com/api/3'
 
     attr_accessor :client_id, :client_secret, :sandbox_mode, :timeout_options
-    attr_reader :api_base, :users
+    attr_reader :api_base, :users, :subscriptions
 
     # Initializes a new Client object
     #
@@ -26,6 +26,7 @@ module SynapsePayments
       @api_base = @sandbox_mode ? API_TEST : API_LIVE
 
       @users = Users.new(self)
+      @subscriptions = Subscriptions.new(self)
     end
 
     # @return [Hash]
