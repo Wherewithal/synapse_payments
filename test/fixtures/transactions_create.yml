@@ -51,8 +51,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"_id": "5646320e86c2731033a29afd", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1/nodes/5646320d86c273105de9ca3c/trans/5646320e86c2731033a29afd"}},
-        "amount": {"amount": 24.0, "currency": "USD"}, "client": {"id": 1231, "name":
-        "Jackpocket Sandbox"}, "extra": {"created_on": 1447440910212, "ip": "192.168.0.1",
+        "amount": {"amount": 24.0, "currency": "USD"}, "client": {"id": 123, "name":
+        "Test Sandbox"}, "extra": {"created_on": 1447440910212, "ip": "192.168.0.1",
         "latlon": "0,0", "note": "", "other": {}, "process_on": 1447440910212, "supp_id":
         "", "webhook": ""}, "fees": [{"fee": 0.2, "note": "Synapse Facilitator Fee",
         "to": {"id": "559339aa86c273605ccd35df"}}], "from": {"id": "5646320d86c273105de9ca3c",

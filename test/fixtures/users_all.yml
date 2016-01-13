@@ -53,21 +53,21 @@ http_interactions:
       string: '{"error_code": "0", "http_code": "200", "page": 1, "page_count": 1,
         "success": true, "users": [{"_id": "5641019d86c273308e8193f1", "_links": {"self":
         {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1"}},
-        "client": {"id": 1231, "name": "Jackpocket Sandbox"}, "doc_status": {"physical_doc":
+        "client": {"id": 123, "name": "Test Sandbox"}, "doc_status": {"physical_doc":
         "MISSING|INVALID", "virtual_doc": "SUBMITTED|VALID"}, "extra": {"date_joined":
         1447100829635, "extra_security": true, "is_business": false, "supp_id": "123"},
         "is_hidden": false, "legal_names": ["Javier Julio"], "logins": [{"email":
-        "javier@jackpocket.com", "read_only": false}], "permission": "RECEIVE", "phone_numbers":
+        "test@example.com", "read_only": false}], "permission": "RECEIVE", "phone_numbers":
         ["646-123-4567"], "photos": [], "refresh_token": "refresh-95452209-3b1c-4165-a4a2-021ee96cdd32"},
         {"_id": "56415e7e86c273619f3526ee", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/56415e7e86c273619f3526ee"}},
-        "client": {"id": 1231, "name": "Jackpocket Sandbox"}, "doc_status": {"physical_doc":
+        "client": {"id": 123, "name": "Test Sandbox"}, "doc_status": {"physical_doc":
         "MISSING|INVALID", "virtual_doc": "SUBMITTED|VALID"}, "extra": {"date_joined":
         1447124606654, "extra_security": true, "is_business": false, "supp_id": "234"},
         "is_hidden": false, "legal_names": ["John Smith"], "logins": [{"email": "johnsmith@example.com",
         "read_only": false}], "permission": "UNVERIFIED", "phone_numbers": ["646-123-7654"],
         "photos": [], "refresh_token": "refresh-8ca3454c-087a-4156-b614-e9b6b9057c06"},
         {"_id": "5645858986c27328a37b5553", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5645858986c27328a37b5553"}},
-        "client": {"id": 1231, "name": "Jackpocket Sandbox"}, "doc_status": {"physical_doc":
+        "client": {"id": 123, "name": "Test Sandbox"}, "doc_status": {"physical_doc":
         "MISSING|INVALID", "virtual_doc": "MISSING|INVALID"}, "extra": {"date_joined":
         1447396745642, "extra_security": true, "is_business": false, "supp_id": "123"},
         "is_hidden": false, "legal_names": ["Javier Julio", "Test Test"], "logins":

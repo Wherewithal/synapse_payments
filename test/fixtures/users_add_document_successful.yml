@@ -52,11 +52,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"_id": "5641019d86c273308e8193f1", "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/users/5641019d86c273308e8193f1"}},
-        "client": {"id": 1231, "name": "Jackpocket Sandbox"}, "doc_status": {"physical_doc":
+        "client": {"id": 123, "name": "Test Sandbox"},"doc_status": {"physical_doc":
         "MISSING|INVALID", "virtual_doc": "SUBMITTED|VALID"}, "extra": {"date_joined":
         1447100829635, "extra_security": true, "is_business": false, "supp_id": "123"},
         "is_hidden": false, "legal_names": ["Javier Julio"], "logins": [{"email":
-        "javier@jackpocket.com", "read_only": false}], "permission": "RECEIVE", "phone_numbers":
+        "test@example.com", "read_only": false}], "permission": "RECEIVE", "phone_numbers":
         ["646-123-4567"], "photos": [], "refresh_token": "refresh-95452209-3b1c-4165-a4a2-021ee96cdd32"}'
     http_version:
   recorded_at: Fri, 13 Nov 2015 18:18:26 GMT

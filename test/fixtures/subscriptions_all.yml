@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sandbox.synapsepay.com/api/3/subscriptions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - SynapsePaymentsRubyGem/0.5.0
+      X-Ruby-Version:
+      - 2.2.3
+      X-Ruby-Platform:
+      - x86_64-darwin15
+      X-Sp-Gateway:
+      - client_id|client_secret
+      X-Sp-User:
+      - "|"
+      X-Sp-User-Ip:
+      - ''
+      Connection:
+      - close
+      Host:
+      - sandbox.synapsepay.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 13 Jan 2016 00:40:26 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=63072000
+    body:
+      encoding: ASCII-8BIT
+      string: '{"error_code": "0", "http_code": "200", "page": 1, "page_count": 1,
+        "subscriptions": [{"_id": "569596e286c27360f39109b9", "_links": {"self": {"href":
+        "https://sandbox.synapsepay.com/api/3/subscriptions/569596e286c27360f39109b9"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": true, "scope":
+        ["USERS|PATCH"], "url": "http://requestb.in/15zo81v1"}, {"_id": "5695989386c27360f39109c0",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/5695989386c27360f39109c0"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": true, "scope":
+        ["USERS|PATCH"], "url": "http://requestb.in/15zo81v1"}, {"_id": "569598e386c2735eb05f9019",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/569598e386c2735eb05f9019"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": false,
+        "scope": [""], "url": "http://requestb.in/15zo81v1"}, {"_id": "5695992a86c27360f39109c6",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/5695992a86c27360f39109c6"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": false,
+        "scope": [""], "url": "http://requestb.in/15zo81v1"}, {"_id": "5695997886c2735f195786b8",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/5695997886c2735f195786b8"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": false,
+        "scope": [], "url": "http://requestb.in/15zo81v1"}, {"_id": "569599d486c273618a45329b",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/569599d486c273618a45329b"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": false,
+        "scope": [], "url": "http://requestb.in/15zo81v1"}, {"_id": "56959cfa86c273618a4532a3",
+        "_links": {"self": {"href": "https://sandbox.synapsepay.com/api/3/subscriptions/56959cfa86c273618a4532a3"}},
+        "client": {"id": 123, "name": "Test Sandbox"}, "is_active": false,
+        "scope": [], "url": "http://requestb.in/15zo81v1"}], "subscriptions_count":
+        7, "success": true}'
+    http_version:
+  recorded_at: Wed, 13 Jan 2016 00:40:25 GMT
+recorded_with: VCR 3.0.1
