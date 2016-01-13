@@ -197,6 +197,17 @@ user_client.nodes(node_id).transactions.find(id)
 user_client.nodes(node_id).transactions.update(id, data)
 ```
 
+#### Subscriptions
+
+Note: This is a feature only available for the Advanced or Premium plans.
+
+```ruby
+client.subscriptions.all
+client.subscriptions.create(url: 'http://site.com/callback', scope: ['USERS|PATCH'])
+client.subscriptions.find(id)
+client.subscriptions.update(id, url: 'http://site.com/new_callback', is_active: false)
+```
+
 #### Error Handling
 
 TODO: add detail
