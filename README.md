@@ -34,9 +34,12 @@ Check out [samples.md](samples.md) to review how to use this library.
         gem install bundler --no-rdoc --no-ri
 
 3. From project root run `./bin/setup` script
-4. Run `./bin/console` for an interactive prompt with an authenticated client for you to experiment:
+4. Run `./bin/console` to experiment with an authenticated `client` and `fingerprint`:
 
   ```ruby
+  fingerprint
+  # => acb123...
+  
   users = client.users.all
   puts users
   # => {...

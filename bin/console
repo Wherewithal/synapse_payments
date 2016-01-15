@@ -20,6 +20,10 @@ def client
   end
 end
 
+def fingerprint
+  ENV['SYNAPSE_PAYMENTS_FINGERPRINT']
+end
+
 def reset_client
   @client = nil
   client

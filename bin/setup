@@ -22,8 +22,13 @@ echo "Enter your account credentials below."
 read -p 'Client ID: ' client_id
 read -p 'Client Secret: ' client_secret
 
+echo "To retrieve your sandbox fingerprint, login and use Element Inspector."
+echo "In the console type sessionStorage.fingerprint, copy value and enter below."
+read -p 'Fingerprint: ' fingerprint
+
 cp .env.sample .env
 sed -i -e s/YOUR_CLIENT_ID/"$client_id"/g .env
 sed -i -e s/YOUR_CLIENT_SECRET/"$client_secret"/g .env
+sed -i -e s/YOUR_FINGERPRINT/"$fingerprint"/g .env
 
 echo "Done."
