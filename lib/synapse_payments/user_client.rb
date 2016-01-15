@@ -70,7 +70,7 @@ module SynapsePayments
 
       data = {
         doc: {
-          attachment: "data:#{file_type};base64,#{Base64.encode64(file_contents)}"
+          attachment: "data:#{file_type};base64,#{Base64.encode64(file_contents).gsub(/\n/, '')}"
         }
       }
 
