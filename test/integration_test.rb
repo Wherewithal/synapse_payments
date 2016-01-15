@@ -7,9 +7,10 @@ class IntegrationTest < Minitest::Test
 
     disable_vcr!
 
+    @fingerprint = ENV.fetch('SYNAPSE_PAYMENTS_FINGERPRINT')
     @user_id = ENV['USER_ID']
     @user = authenticated_client.users.find(@user_id)
-    @user_client = authenticated_client.users.authenticate_as(id: @user_id, refresh_token: @user[:refresh_token])
+    @user_client = authenticated_client.users.authenticate_as(id: @user_id, refresh_token: @user[:refresh_token], fingerprint: @fingerprint)
   end
 
   def teardown
@@ -18,6 +19,7 @@ class IntegrationTest < Minitest::Test
     @user_id = nil
     @user = nil
     @user_client = nil
+    @fingerprint = nil
 
     enable_vcr!
   end
@@ -48,8 +50,8 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_create_user_with_fingerprint_and_data
-    user = authenticated_client.users.create(name: 'Test Test', email: 'test@test.com', phone: '123-456-8790', fingerprint: 'abc123')
-    user_client = authenticated_client.users.authenticate_as(id: user[:_id], refresh_token: user[:refresh_token], fingerprint: 'abc123')
+    user = authenticated_client.users.create(name: 'John Doe', email: 'john@test.com', phone: '123-456-8790', fingerprint: @fingerprint)
+    user_client = authenticated_client.users.authenticate_as(id: user[:_id], refresh_token: user[:refresh_token], fingerprint: @fingerprint)
 
     refute_nil user_client.expires_at
     refute_nil user_client.expires_in
@@ -101,7 +103,7 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_authenticate_as
-    user_client = authenticated_client.users.authenticate_as(id: @user_id, refresh_token: @user[:refresh_token])
+    user_client = authenticated_client.users.authenticate_as(id: @user_id, refresh_token: @user[:refresh_token], fingerprint: @fingerprint)
 
     refute_predicate user_client.refresh_token, :empty?
   end
@@ -167,12 +169,12 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_add_bank_account
-    response = @user_client.add_bank_account(name: 'John Smith', account_number: '72347235423', routing_number: '051000017', category: 'PERSONAL', type: 'CHECKING')
+    response = @user_client.add_bank_account(name: 'Test Test', account_number: '72347235423', routing_number: '051000017', category: 'PERSONAL', type: 'CHECKING')
 
     assert response[:success]
     assert_equal 1, response[:nodes].size
     refute_predicate response[:nodes][0][:_id], :empty?
-    assert_equal 'John Smith', response[:nodes][0][:info][:name_on_account]
+    assert_equal 'Test Test', response[:nodes][0][:info][:name_on_account]
     assert_equal 'PERSONAL', response[:nodes][0][:info][:type]
     assert_equal 'CHECKING', response[:nodes][0][:info][:class]
     assert_equal '5423', response[:nodes][0][:info][:account_num]
@@ -183,12 +185,12 @@ class IntegrationTest < Minitest::Test
   end
 
   def test_add_instant_verified_bank_account
-    response = @user_client.add_bank_account(name: 'John Smith', account_number: '123456786', routing_number: '051000017', category: 'PERSONAL', type: 'CHECKING')
+    response = @user_client.add_bank_account(name: 'Test Test', account_number: '123456786', routing_number: '051000017', category: 'PERSONAL', type: 'CHECKING')
 
     assert response[:success]
     assert_equal 1, response[:nodes].size
     refute_predicate response[:nodes][0][:_id], :empty?
-    assert_equal 'John Smith', response[:nodes][0][:info][:name_on_account]
+    assert_equal 'Test Test', response[:nodes][0][:info][:name_on_account]
     assert_equal 'PERSONAL', response[:nodes][0][:info][:type]
     assert_equal 'CHECKING', response[:nodes][0][:info][:class]
     assert_equal '6786', response[:nodes][0][:info][:account_num]
@@ -201,8 +203,10 @@ class IntegrationTest < Minitest::Test
     bank = @user_client.bank_login(bank_name: 'fake', username: 'synapse_nomfa', password: 'test1234')
 
     assert_equal 2, bank[:nodes].size
-
-    @user_client.nodes.delete(bank[:nodes].first[:_id])
+    assert_equal 'CREDIT-AND-DEBIT', bank[:nodes][0][:allowed]
+    assert_equal '8901', bank[:nodes][0][:info][:account_num]
+    assert_equal 'CREDIT-AND-DEBIT', bank[:nodes][1][:allowed]
+    assert_equal '8902', bank[:nodes][1][:info][:account_num]
   end
 
   def test_bank_login_with_mfa
