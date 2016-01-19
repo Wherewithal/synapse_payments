@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
 
-  spec.add_dependency "http", '~> 1.0'
+  spec.add_dependency "http", '~> 0.9'
   spec.add_dependency "mime-types", '~> 2.9'
 
 end
