@@ -28,7 +28,20 @@ response[1][:bank_name]
 # => "Bank of America"
 ```
 
+### Subscriptions
+
+Note: This is a feature only available for the Advanced or Premium plans.
+
+```ruby
+client.subscriptions.all
+client.subscriptions.create(url: 'http://site.com/callback', scope: ['USERS|PATCH'])
+client.subscriptions.find(id)
+client.subscriptions.update(id, url: 'http://site.com/new_callback', is_active: false)
+```
+
 ### Users
+
+All actions below require and assume user authentication.
 
 #### Retrieve all users (paginated)
 
@@ -88,7 +101,9 @@ user[:legal_names]
 
 #### Update a user
 
-NOTE: Action needs to be implemented.
+```ruby
+user_client.update(legal_name: 'John Smith', remove_login: { email: 'test@test.com' })
+```
 
 #### Add a document
 
@@ -195,17 +210,6 @@ user_client.nodes(node_id).transactions.create(node_id:, node_type:, amount:, cu
 user_client.nodes(node_id).transactions.delete(id)
 user_client.nodes(node_id).transactions.find(id)
 user_client.nodes(node_id).transactions.update(id, data)
-```
-
-#### Subscriptions
-
-Note: This is a feature only available for the Advanced or Premium plans.
-
-```ruby
-client.subscriptions.all
-client.subscriptions.create(url: 'http://site.com/callback', scope: ['USERS|PATCH'])
-client.subscriptions.find(id)
-client.subscriptions.update(id, url: 'http://site.com/new_callback', is_active: false)
 ```
 
 #### Error Handling
