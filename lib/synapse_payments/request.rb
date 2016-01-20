@@ -2,7 +2,6 @@ module SynapsePayments
   class Request
 
     HEADERS = {
-      'Accept'          => 'application/json',
       'User-Agent'      => "SynapsePaymentsRubyGem/#{SynapsePayments::VERSION}",
       'X-Ruby-Version'  => RUBY_VERSION,
       'X-Ruby-Platform' => RUBY_PLATFORM
@@ -32,7 +31,7 @@ module SynapsePayments
         'X-SP-USER' => "#{@oauth_key}|#{@fingerprint}",
         'X-SP-USER-IP' => ''
       })
-      HTTP.headers(headers).timeout(@client.timeout_options)
+      HTTP.headers(headers).accept(:json).timeout(@client.timeout_options)
     end
 
     def fail_or_return_response_body(code, body)
