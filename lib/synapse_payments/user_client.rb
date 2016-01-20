@@ -23,6 +23,16 @@ module SynapsePayments
       @client.get(path: "/users/#{@user_id}", oauth_key: @oauth_key)
     end
 
+    def update(data)
+      raise ArgumentError, 'Argument is not a hash' unless data.is_a? Hash
+
+      if data[:doc].nil?
+        data = { refresh_token: self.refresh_token, update: data }
+      end
+
+      @client.patch(path: "/users/#{@user_id}", oauth_key: @oauth_key, fingerprint: @fingerprint, json: data)
+    end
+
     # Adds a virtual document for KYC
     #
     # @param birthdate [Date]

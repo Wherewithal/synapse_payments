@@ -61,8 +61,12 @@ class IntegrationTest < Minitest::Test
     response = user_client.nodes.all
     assert response[:success]
 
+    user = user_client.update(legal_name: 'Jonathan Doe')
+    refute_predicate user[:_id], :empty?
+    assert_equal ['John Doe', 'Jonathan Doe'], user[:legal_names]
+
     bank = user_client.add_bank_account(
-      name: 'John Doe',
+      name: 'Jonathan Doe',
       account_number: '123456786',
       routing_number: '051000017',
       category: 'PERSONAL',
