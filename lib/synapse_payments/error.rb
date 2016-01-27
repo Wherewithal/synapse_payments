@@ -92,8 +92,10 @@ module SynapsePayments
       def parse_error(body)
         if body.nil? || body.empty?
           ['', nil]
-        elsif body.is_a?(Hash) && body['error'].is_a?(Hash)
-          [body['error']['en'], body['error_code']]
+        elsif body.is_a?(Hash) && body[:error].is_a?(Hash)
+          [body[:error][:en], body[:error_code]]
+        else
+          [body.to_s, nil]
         end
       end
 
